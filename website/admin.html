@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CAREERLIFT — Admin Portal</title><link rel="icon" href="assets/logo.jpeg"><link rel="stylesheet" href="style.css">
 <style>
-.admin-wrap{width:min(1180px,92%);margin:auto;padding:55px 0}.admin-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}.admin-panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.6px}.field input,.field textarea,.field select{width:100%;padding:13px 14px;background:#091512;border:1px solid var(--line);border-radius:12px;color:var(--text);outline:none}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(24,211,165,.05)}.admin-actions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}.message{font-size:11px;color:var(--muted)}.login-card{max-width:470px;margin:70px auto}.admin-title{font:700 48px "Space Grotesk";letter-spacing:-3px;margin:10px 0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:10px 14px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);border-radius:12px;font-size:11px;font-weight:800}.tab.active{background:rgba(24,211,165,.1);border-color:rgba(24,211,165,.3);color:var(--green)}.admin-list{display:grid;gap:10px;margin-top:18px}.admin-item{padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02);display:flex;justify-content:space-between;gap:12px;align-items:center}.admin-item h3{font-size:14px}.admin-item p{font-size:10px;color:var(--muted);margin-top:3px}.danger{background:#5a1f28;color:#ffd9de;border:0}.note{padding:12px 14px;border:1px solid rgba(244,199,106,.18);background:rgba(244,199,106,.04);border-radius:12px;color:#cbbd9e;font-size:10px;margin-bottom:16px}@media(max-width:700px){.admin-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-head{display:block}.admin-head .hero-actions{margin-top:15px}}
+.admin-wrap{width:min(1180px,92%);margin:auto;padding:55px 0}.admin-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:28px}.admin-panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}.admin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.6px}.field input,.field textarea,.field select{width:100%;padding:13px 14px;background:#091512;border:1px solid var(--line);border-radius:12px;color:var(--text);outline:none}.field textarea{min-height:120px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--green);box-shadow:0 0 0 4px rgba(24,211,165,.05)}.admin-actions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}.message{font-size:11px;color:var(--muted)}.login-card{max-width:470px;margin:70px auto}.admin-title{font:700 48px "Space Grotesk";letter-spacing:-3px;margin:10px 0}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tab{padding:10px 14px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);border-radius:12px;font-size:11px;font-weight:800}.tab.active{background:rgba(24,211,165,.1);border-color:rgba(24,211,165,.3);color:var(--green)}.admin-list{display:grid;gap:10px;margin-top:18px}.admin-item{padding:15px;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.02);display:flex;justify-content:space-between;gap:12px;align-items:center}.admin-item h3{font-size:14px}.admin-item p{font-size:10px;color:var(--muted);margin-top:3px}.danger{background:#5a1f28;color:#ffd9de;border:0}.note{padding:12px 14px;border:1px solid rgba(244,199,106,.18);background:rgba(244,199,106,.04);border-radius:12px;color:#cbbd9e;font-size:10px;margin-bottom:16px}.upload-box{position:relative;min-height:190px;border:1px dashed rgba(24,211,165,.45);border-radius:20px;background:linear-gradient(145deg,rgba(24,211,165,.055),rgba(22,135,232,.035));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;transition:.3s;cursor:pointer;overflow:hidden}.upload-box:hover{border-color:var(--green);background:linear-gradient(145deg,rgba(24,211,165,.10),rgba(22,135,232,.06));transform:translateY(-2px)}.upload-box input[type=file]{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}.upload-icon{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;background:rgba(24,211,165,.10);border:1px solid rgba(24,211,165,.20);font-size:28px}.upload-box strong{font-size:14px;color:#fff}.upload-box span{font-size:11px;color:#8fa7a0}.file-name{margin-top:9px;color:var(--green);font-size:12px;font-weight:600;word-break:break-all}.upload-progress{width:100%;height:5px;margin-top:12px;border-radius:20px;background:rgba(255,255,255,.06);overflow:hidden}.upload-progress-bar{height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--green),var(--blue));transition:width .3s}@media(max-width:700px){.admin-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.admin-head{display:block}.admin-head .hero-actions{margin-top:15px}}
 </style></head><body>
 <header class="navbar"><a class="brand" href="index.html"><img src="assets/logo.jpeg" alt="CAREERLIFT"><span>CAREER<span class="brand-accent">LIFT</span></span></a><a class="nav-telegram" href="index.html">← Public Website</a></header>
 <main class="admin-wrap">
@@ -11,108 +11,21 @@
 <section id="jobsPanel" class="admin-panel tab-panel"><div class="note">Publish a job once. It automatically appears in the Latest Jobs section.</div><form id="jobForm" class="admin-grid">
 <div class="field"><label>Job title *</label><input id="title" required></div><div class="field"><label>Company</label><input id="company"></div><div class="field"><label>Category</label><select id="category"><option>Government Jobs</option><option>Private Jobs</option><option>IT Jobs</option><option>Freshers Jobs</option><option>Work From Home</option><option>Banking Jobs</option><option>Internships</option><option>Other</option></select></div><div class="field"><label>Location</label><input id="location"></div><div class="field"><label>Qualification</label><input id="qualification"></div><div class="field"><label>Experience</label><input id="experience"></div><div class="field"><label>Salary</label><input id="salary"></div><div class="field"><label>Last date</label><input id="last_date"></div><div class="field full"><label>Official application URL *</label><input id="apply_url" type="url" required></div><div class="field"><label>Telegram URL</label><input id="telegram_url" type="url"></div><div class="field"><label>WhatsApp URL</label><input id="whatsapp_url" type="url"></div><div class="field full"><label>Description</label><textarea id="description"></textarea></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Job ✓</button><button class="btn secondary" type="reset">Clear</button><span id="jobMsg" class="message"></span></div></div></form><div class="admin-list" id="adminJobs"></div></section>
 
-<section id="resourcesPanel" class="admin-panel tab-panel" hidden><div class="note">Share PDFs, images, notes, videos or guides. Upload the file to a public location and paste its URL below. An optional image URL creates a visual resource card.</div><form id="resourceForm" class="admin-grid">
-<div class="admin-panel">
+<section id="resourcesPanel" class="admin-panel tab-panel" hidden>
+<div class="note">Upload a PDF or image directly from your computer. The file is stored in your Supabase <strong>resources</strong> bucket and automatically appears in the public Resource Hub.</div>
+<form id="resourceForm" class="admin-grid">
+<div class="field full"><label>Resource title *</label><input id="rtitle" required maxlength="160" placeholder="Aptitude Notes PDF"></div>
+<div class="field full"><label>Upload PDF / Image *</label><div class="upload-box" id="uploadBox">
+<input id="resourceFile" type="file" accept=".pdf,image/jpeg,image/png,image/webp" required aria-label="Upload PDF or image">
+<div class="upload-icon">📁</div>
+<strong>Choose a PDF or image</strong>
+<span>PDF, JPG, JPEG, PNG or WEBP · Max 20 MB</span>
+</div><div id="fileName" class="file-name"></div></div>
+<div class="field full"><div class="admin-actions"><button class="btn primary" type="submit" id="publishResourceBtn">Upload & Publish ✓</button><button class="btn secondary" type="reset" id="clearResourceBtn">Clear</button><span id="resourceMsg" class="message"></span></div></div>
+</form>
+<div class="admin-list" id="adminResources"></div>
+</section>
 
-    <div class="admin-note">
-        Upload PDF files or images directly from your computer.
-        They will be added to the CAREERLIFT Resources section.
-    </div>
-
-    <form id="resourceForm">
-
-        <!-- RESOURCE TITLE -->
-        <div class="field">
-            <label>RESOURCE TITLE *</label>
-
-            <input
-                id="resourceTitle"
-                type="text"
-                placeholder="Example: Aptitude Notes PDF"
-                required
-            >
-        </div>
-
-
-        <!-- FILE UPLOAD -->
-        <div class="field" style="margin-top:20px;">
-
-            <label>UPLOAD PDF / IMAGE *</label>
-
-            <div class="upload-box">
-
-                <input
-                    id="resourceFile"
-                    type="file"
-                    accept=".pdf,image/*"
-                    required
-                >
-
-                <div class="upload-icon">
-                    📁
-                </div>
-
-                <strong>Select PDF or Image</strong>
-
-                <span>
-                    PDF, JPG, JPEG, PNG, WEBP
-                </span>
-
-            </div>
-
-            <div
-                id="fileName"
-                class="file-name"
-            ></div>
-
-        </div>
-
-
-        <!-- PUBLISH -->
-        <div class="admin-actions">
-
-            <button
-                type="submit"
-                class="btn primary"
-                id="publishResourceBtn"
-            >
-                Upload & Publish ✓
-            </button>
-
-            <button
-                type="reset"
-                class="btn secondary"
-                id="clearResourceBtn"
-            >
-                Clear
-            </button>
-
-            <span
-                id="resourceMsg"
-                class="message"
-            ></span>
-
-        </div>
-
-    </form>
-
-</div>
-
-
-<!-- RECENT RESOURCES -->
-
-<div
-    class="admin-panel recent"
-    style="margin-top:20px;"
->
-
-    <span class="eyebrow">
-        RECENT RESOURCES
-    </span>
-
-    <div id="adminResources"></div>
-
-</div>
 <section id="contactPanel" class="admin-panel tab-panel" hidden><div class="note">Only the latest active contact profile is shown publicly. Use this form whenever you want to update your phone number, email or channel links.</div><form id="contactForm" class="admin-grid"><div class="field"><label>Phone number</label><input id="phone" placeholder="+91 98765 43210"></div><div class="field"><label>Email</label><input id="cemail" type="email" value="careerliftupdates@gmail.com"></div><div class="field"><label>Telegram URL</label><input id="ctelegram" type="url" value="https://t.me/CareerLift360"></div><div class="field"><label>WhatsApp URL</label><input id="cwhatsapp" type="url" value="https://whatsapp.com/channel/0029VbDtgeEDJ6GripCIW82V"></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Contact ✓</button><span id="contactMsg" class="message"></span></div></div></form><div class="admin-list" id="adminContacts"></div></section>
 </section></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
@@ -123,11 +36,11 @@ $("loginForm").addEventListener("submit",async e=>{e.preventDefault();if(!client
 $("logoutBtn").onclick=async()=>{await client.auth.signOut();dash.hidden=true;loginView.hidden=false};
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".tab-panel").forEach(x=>x.hidden=true);$(b.dataset.tab+"Panel").hidden=false});
 $("jobForm").onsubmit=async e=>{e.preventDefault();msg($("jobMsg"),"Publishing...");const {data:{user}}=await client.auth.getUser();const payload={title:$("title").value.trim(),company:$("company").value.trim(),category:$("category").value,location:$("location").value.trim(),qualification:$("qualification").value.trim(),experience:$("experience").value.trim(),salary:$("salary").value.trim(),last_date:$("last_date").value.trim(),apply_url:$("apply_url").value.trim(),telegram_url:$("telegram_url").value.trim()||null,whatsapp_url:$("whatsapp_url").value.trim()||null,description:$("description").value.trim(),created_by:user.id};const {error}=await client.from("jobs").insert(payload);if(error)return msg($("jobMsg"),error.message,true);msg($("jobMsg"),"Published ✓");$("jobForm").reset();loadJobsAdmin()};
-$("resourceForm").onsubmit=async e=>{e.preventDefault();msg($("resourceMsg"),"Publishing...");const {data:{user}}=await client.auth.getUser();const payload={title:$("rtitle").value.trim(),type:$("rtype").value,resource_url:$("resource_url").value.trim(),image_url:$("image_url").value.trim()||null,description:$("rdescription").value.trim(),created_by:user.id};const {error}=await client.from("resources").insert(payload);if(error)return msg($("resourceMsg"),error.message,true);msg($("resourceMsg"),"Resource published ✓");$("resourceForm").reset();loadResourcesAdmin()};
+const resourceFile=$("resourceFile"),fileName=$("fileName"),resourceTitle=$("rtitle"),publishResourceBtn=$("publishResourceBtn");resourceFile.addEventListener("change",()=>{const f=resourceFile.files[0];fileName.textContent=f?`Selected: ${f.name}`:""});function validResourceFile(f){return f&&["application/pdf","image/jpeg","image/png","image/webp"].includes(f.type)}function safeFileName(name){return name.replace(/[^a-zA-Z0-9.-]/g,"-").toLowerCase()}$("resourceForm").onsubmit=async e=>{e.preventDefault();if(!client)return msg($("resourceMsg"),"Configure Supabase first.",true);const {data:{user}}=await client.auth.getUser();if(!user)return msg($("resourceMsg"),"Please sign in again.",true);const title=resourceTitle.value.trim(),file=resourceFile.files[0];if(!title)return msg($("resourceMsg"),"Enter a resource title.",true);if(!validResourceFile(file))return msg($("resourceMsg"),"Select a PDF, JPG, PNG or WEBP file.",true);if(file.size>20*1024*1024)return msg($("resourceMsg"),"Maximum file size is 20 MB.",true);publishResourceBtn.disabled=true;publishResourceBtn.textContent="Uploading...";msg($("resourceMsg"),"Uploading file...");try{const path=`${Date.now()}-${crypto.randomUUID()}-${safeFileName(file.name)}`;const {error:uploadError}=await client.storage.from("resources").upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});if(uploadError)throw uploadError;const {data:publicData}=client.storage.from("resources").getPublicUrl(path);const type=file.type==="application/pdf"?"PDF":"Image";const {error:dbError}=await client.from("resources").insert({title,type,resource_url:publicData.publicUrl,image_url:type==="Image"?publicData.publicUrl:null,description:null,created_by:user.id});if(dbError){await client.storage.from("resources").remove([path]);throw dbError}msg($("resourceMsg"),"Resource published successfully ✓");$("resourceForm").reset();fileName.textContent="";loadResourcesAdmin()}catch(error){console.error(error);msg($("resourceMsg"),error.message||"Upload failed. Please try again.",true)}finally{publishResourceBtn.disabled=false;publishResourceBtn.textContent="Upload & Publish ✓"}};$("resourceForm").addEventListener("reset",()=>{setTimeout(()=>{fileName.textContent="";msg($("resourceMsg"),"")},0)});
 $("contactForm").onsubmit=async e=>{e.preventDefault();msg($("contactMsg"),"Publishing...");const {data:{user}}=await client.auth.getUser();await client.from("contacts").update({is_active:false}).eq("is_active",true);const payload={phone:$("phone").value.trim()||null,email:$("cemail").value.trim()||null,telegram_url:$("ctelegram").value.trim()||null,whatsapp_url:$("cwhatsapp").value.trim()||null,is_active:true,created_by:user.id};const {error}=await client.from("contacts").insert(payload);if(error)return msg($("contactMsg"),error.message,true);msg($("contactMsg"),"Contact published ✓");loadContactsAdmin()};
 async function loadJobsAdmin(){const {data}=await client.from("jobs").select("id,title,company,category").order("created_at",{ascending:false}).limit(15);$("adminJobs").innerHTML=(data||[]).map(j=>`<div class="admin-item"><div><h3>${esc(j.title)}</h3><p>${esc(j.company||"")} · ${esc(j.category||"")}</p></div><button class="btn danger" onclick="del('jobs',${j.id})">Delete</button></div>`).join("")||'<p class="message">No jobs yet.</p>'}
-async function loadResourcesAdmin(){const {data}=await client.from("resources").select("id,title,type").order("created_at",{ascending:false}).limit(15);$("adminResources").innerHTML=(data||[]).map(r=>`<div class="admin-item"><div><h3>${esc(r.title)}</h3><p>${esc(r.type||"Resource")}</p></div><button class="btn danger" onclick="del('resources',${r.id})">Delete</button></div>`).join("")||'<p class="message">No resources yet.</p>'}
+async function loadResourcesAdmin(){const {data,error}=await client.from("resources").select("id,title,type,resource_url").order("created_at",{ascending:false}).limit(15);if(error){$("adminResources").innerHTML=`<p class="message">${esc(error.message)}</p>`;return}$("adminResources").innerHTML=(data||[]).map(r=>`<div class="admin-item"><div><h3>${esc(r.title)}</h3><p>${esc(r.type||"Resource")} · <a href="${esc(r.resource_url)}" target="_blank" rel="noopener" style="color:var(--green)">Open ↗</a></p></div><button class="btn danger" onclick="deleteResource(${r.id},'${String(r.resource_url||"").replace(/\/g,"\\").replace(/'/g,"\'")}')">Delete</button></div>`).join("")||'<p class="message">No resources yet.</p>'}
 async function loadContactsAdmin(){const {data}=await client.from("contacts").select("id,phone,email,is_active").order("created_at",{ascending:false}).limit(10);$("adminContacts").innerHTML=(data||[]).map(c=>`<div class="admin-item"><div><h3>${esc(c.phone||"No phone")} · ${esc(c.email||"No email")}</h3><p>${c.is_active?"ACTIVE — shown publicly":"Archived"}</p></div>${c.is_active?'<span class="badge">LIVE</span>':""}</div>`).join("")||'<p class="message">No contact profile yet.</p>'}
-async function del(table,id){if(!confirm("Delete this item?"))return;const {error}=await client.from(table).delete().eq("id",id);if(error)return alert(error.message);loadAll()}
+async function deleteResource(id,resourceUrl){if(!confirm("Delete this resource?"))return;const {error}=await client.from("resources").delete().eq("id",id);if(error)return alert(error.message);try{const url=new URL(resourceUrl);const marker="/storage/v1/object/public/resources/";const index=url.pathname.indexOf(marker);if(index!==-1){const path=decodeURIComponent(url.pathname.slice(index+marker.length));if(path)await client.storage.from("resources").remove([path])}}catch(storageError){console.warn("Database record deleted, but storage file could not be removed:",storageError)}loadResourcesAdmin()}async function del(table,id){if(!confirm("Delete this item?"))return;const {error}=await client.from(table).delete().eq("id",id);if(error)return alert(error.message);loadAll()}
 function loadAll(){loadJobsAdmin();loadResourcesAdmin();loadContactsAdmin()}refresh();
 </script></body></html>
