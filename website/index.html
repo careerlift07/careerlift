@@ -2,15 +2,173 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="description" content="CareerLift — Your Daily Dose of Job Opportunities, resources and career updates.">
-<meta name="keywords" content="jobs, internships, career, freshers jobs, government jobs, private jobs, resources, CareerLift">
-<meta name="author" content="SHAIK ALTHAF">
+<meta name="description" content="CAREERLIFT — jobs, internships, career resources and daily opportunities in one place.">
 <title>CAREERLIFT 🎓 — Jobs, Resources & Career Updates</title>
-<link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/logo.jpeg"><link rel="stylesheet" href="style.css">
+
+<style id="careerlift-professional-theme">
+:root{
+  --bg:#071312;
+  --surface:#0c1c19;
+  --surface2:#102520;
+  --text:#f2faf7;
+  --muted:#9ab0aa;
+  --line:rgba(196,232,220,.12);
+  --accent:#25d3a5;
+  --accent2:#75e8ca;
+  --shadow:0 24px 70px rgba(0,0,0,.28);
+}
+html{scroll-behavior:smooth}
+body{
+  background:
+    radial-gradient(circle at 80% 0%,rgba(37,211,165,.10),transparent 28%),
+    radial-gradient(circle at 5% 35%,rgba(75,135,255,.07),transparent 24%),
+    var(--bg);
+  color:var(--text);
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(to bottom,black,transparent 78%);
+}
+.navbar{
+  background:rgba(7,19,18,.78);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(18px);
+}
+.navbar nav a{color:#b8c9c4}
+.navbar nav a:hover{color:var(--text)}
+.brand-accent,.hero h1 span,.eyebrow{color:var(--accent)}
+.nav-telegram,.btn.primary{
+  background:var(--accent)!important;
+  color:#04231b!important;
+  box-shadow:0 12px 30px rgba(37,211,165,.18);
+}
+.btn.secondary{
+  background:rgba(255,255,255,.035);
+  border-color:var(--line);
+}
+.hero{padding-top:90px;padding-bottom:78px}
+.hero h1{font-size:clamp(46px,6vw,78px);line-height:.98;letter-spacing:-3px}
+.hero p{max-width:680px;color:#b4c6c1;font-size:17px;line-height:1.8}
+.hero-visual img{filter:drop-shadow(0 24px 55px rgba(37,211,165,.14))}
+.ticker{border-block:1px solid var(--line);background:rgba(255,255,255,.018)}
+.stats{
+  margin-top:28px;
+  background:linear-gradient(135deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border:1px solid var(--line);
+  box-shadow:var(--shadow);
+}
+.stats strong{color:var(--accent)}
+.section{padding-top:92px}
+.section-heading h2,.about h2,.contact-panel h2,.cta h2{
+  letter-spacing:-2px;
+}
+.search-wrap{
+  background:#091815;
+  border-color:var(--line);
+}
+.jobs-grid,.resource-grid{gap:20px}
+.jobs-grid>*,.resource-grid>*{
+  border:1px solid var(--line)!important;
+  background:linear-gradient(145deg,rgba(18,39,34,.92),rgba(9,24,21,.92))!important;
+  box-shadow:0 16px 45px rgba(0,0,0,.16);
+  border-radius:22px!important;
+}
+.category-grid button{
+  background:rgba(12,29,25,.82);
+  border:1px solid var(--line);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.category-grid button:hover{
+  transform:translateY(-5px);
+  border-color:rgba(37,211,165,.45);
+  background:rgba(20,46,39,.92);
+}
+.about{
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:50px;
+  align-items:start;
+}
+.about-copy{
+  padding:12px 0;
+}
+.about-copy h2{
+  font-size:clamp(34px,4vw,54px);
+  margin:12px 0 18px;
+}
+.about-copy p{max-width:560px;color:var(--muted);line-height:1.8}
+.about-points{display:grid;gap:14px}
+.about-points article{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:22px;
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:rgba(255,255,255,.025);
+}
+.about-points article>span{
+  color:var(--accent);font-weight:800;font-size:13px;letter-spacing:1px;
+}
+.about-points strong{font-size:17px}
+.about-points p{margin:7px 0 0;color:var(--muted);line-height:1.6;font-size:13px}
+.contact-panel{
+  display:grid;
+  grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+  gap:44px;
+  padding:38px;
+  border:1px solid var(--line);
+  border-radius:28px;
+  background:linear-gradient(145deg,rgba(17,39,34,.96),rgba(8,24,21,.96));
+  box-shadow:var(--shadow);
+}
+.contact-intro h2{font-size:clamp(34px,4vw,48px);margin:10px 0}
+.contact-intro p{color:var(--muted);line-height:1.75;max-width:470px}
+.contact-items{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:center}
+.contact-card{
+  display:flex;align-items:center;gap:14px;
+  padding:20px;
+  min-height:92px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.025);
+  text-decoration:none;
+  color:var(--text);
+  transition:transform .2s ease,border-color .2s ease;
+}
+.contact-card:hover{transform:translateY(-3px);border-color:rgba(37,211,165,.42)}
+.contact-icon{
+  width:44px;height:44px;display:grid;place-items:center;
+  border-radius:14px;background:rgba(37,211,165,.12);
+  color:var(--accent);font-size:20px;flex:0 0 auto;
+}
+.contact-card small{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}
+.contact-card strong{font-size:14px;word-break:break-word}
+.feature-strip,.cta{
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(18,42,36,.9),rgba(9,25,22,.9));
+  box-shadow:var(--shadow);
+}
+footer{
+  margin-top:70px;
+  border-top:1px solid var(--line);
+  background:#06100f;
+}
+@media(max-width:850px){
+  .about,.contact-panel{grid-template-columns:1fr}
+  .contact-items{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .hero{padding-top:55px}
+  .hero h1{letter-spacing:-2px}
+  .contact-panel{padding:24px}
+  .about-points article{padding:18px}
+}
+</style>
+
 </head>
 <body>
 <header class="navbar">
@@ -31,45 +189,49 @@
 
 <section id="jobs" class="section container"><div class="section-heading reveal"><div><span class="eyebrow">LATEST OPPORTUNITIES</span><h2>Find your next opportunity.</h2><p>Fresh posts published through the CAREERLIFT admin portal.</p></div><label class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="Search jobs or companies..." aria-label="Search jobs"></label></div><div id="jobsGrid" class="jobs-grid"></div></section>
 
-<section id="resources" class="section container"><div class="section-heading reveal"><div><span class="eyebrow">CAREER RESOURCE HUB</span><h2>Materials that help you grow.</h2><p>Download useful PDFs, images, notes, interview guides, roadmaps and other resources shared by CAREERLIFT.</p></div></div><div id="resourcesGrid" class="resource-grid"></div></section>
+<section id="resources" class="section container"><div class="section-heading reveal"><div><span class="eyebrow">CAREER RESOURCE HUB</span><h2>Materials that help you grow.</h2><p>Notes, PDFs, images, interview guides, roadmaps and other useful resources shared by CAREERLIFT.</p></div></div><div id="resourcesGrid" class="resource-grid"></div></section>
 
 <section id="categories" class="section container"><div class="section-heading reveal"><div><span class="eyebrow">BROWSE SMARTER</span><h2>Explore by category.</h2></div></div><div class="category-grid reveal">
 <button data-category="Government Jobs"><img src="assets/government.svg" alt=""><span>Government Jobs</span></button><button data-category="Private Jobs"><img src="assets/private.svg" alt=""><span>Private Jobs</span></button><button data-category="IT Jobs"><img src="assets/it.svg" alt=""><span>IT Jobs</span></button><button data-category="Freshers Jobs"><img src="assets/freshers.svg" alt=""><span>Freshers Jobs</span></button><button data-category="Work From Home"><img src="assets/remote.svg" alt=""><span>Work From Home</span></button><button data-category="Banking Jobs"><img src="assets/banking.svg" alt=""><span>Banking Jobs</span></button>
 </div></section>
 
-<section id="about" class="section container about"><div class="reveal"><span class="eyebrow">ABOUT CAREERLIFT</span><h2>Helping job seekers move forward.</h2></div><div class="about-card reveal"><div class="about-person"><img class="avatar" src="assets/logo.jpeg" alt="CAREERLIFT"><div><strong>SHAIK ALTHAF</strong><div style="color:var(--muted);font-size:11px">Founder • CAREERLIFT</div></div></div><p>I share the latest job opportunities, career updates, and useful employment information to help job seekers discover the right opportunities every day.</p><p style="margin-top:18px;">Our goal is simple — make useful career information easier to discover and help job seekers find the right opportunities every day.</p></div></section>
+<section id="about" class="section container about">
+  <div class="about-copy reveal">
+    <span class="eyebrow">ABOUT CAREERLIFT</span>
+    <h2>One place for your next career move.</h2>
+    <p>CAREERLIFT brings jobs, internships, career resources and useful updates together in a simple, easy-to-follow experience.</p>
+  </div>
 
-<section class="section container">
-<div class="feature-strip reveal">
-<div class="feature"><b>🎯 Opportunities</b><span>Discover job and internship opportunities from different categories.</span></div>
-<div class="feature"><b>📚 Resources</b><span>Access useful PDFs, notes, images, guides and study materials.</span></div>
-<div class="feature"><b>🚀 Career Growth</b><span>Get useful information to improve your skills and career journey.</span></div>
-</div>
+  <div class="about-points reveal">
+    <article><span>01</span><div><strong>Discover</strong><p>Find fresh opportunities across government, private, IT, fresher, remote and banking categories.</p></div></article>
+    <article><span>02</span><div><strong>Prepare</strong><p>Use notes, PDFs, guides, images and other practical resources to build your skills.</p></div></article>
+    <article><span>03</span><div><strong>Move forward</strong><p>Follow CAREERLIFT for regular updates and direct links to useful opportunities.</p></div></article>
+  </div>
 </section>
 
-<section id="contact" class="section container"><div class="contact-panel reveal"><div><span class="eyebrow">CONTACT CAREERLIFT</span><h2 style="font-size:35px;letter-spacing:-2px;margin:12px 0">Have a question?</h2><p style="color:var(--muted);font-size:13px">For questions, suggestions, collaborations or career-related information, feel free to contact us.</p></div><div id="contactItems" class="contact-items"></div></div></section>
+<section id="contact" class="section container">
+  <div class="contact-panel reveal">
+    <div class="contact-intro">
+      <span class="eyebrow">CONTACT US</span>
+      <h2>Let's stay connected.</h2>
+      <p>For questions, suggestions, collaborations or career-related information, reach out to CAREERLIFT.</p>
+    </div>
 
-<section class="section container"><div class="cta reveal"><div><span class="eyebrow">DON'T MISS AN UPDATE</span><h2>Get the next opportunity on your phone.</h2><p>Follow CAREERLIFT for daily job, internship and career updates.</p></div><div class="hero-actions"><a class="btn primary" href="https://t.me/CareerLift360" target="_blank">Join Telegram ↗</a><a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbDtgeEDJ6GripCIW82V" target="_blank">Join WhatsApp ↗</a></div></div></section>
+    <div id="contactItems" class="contact-items">
+      <a class="contact-card" href="tel:+918712344977">
+        <span class="contact-icon" aria-hidden="true">☎</span>
+        <span><small>Mobile number</small><strong>+91 8712344977</strong></span>
+      </a>
+      <a class="contact-card" href="mailto:careerliftupdates@gmail.com">
+        <span class="contact-icon" aria-hidden="true">✉</span>
+        <span><small>Email address</small><strong>careerliftupdates@gmail.com</strong></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section container"><div class="cta reveal"><div><span class="eyebrow">DON'T MISS AN UPDATE</span><h2>Get the next opportunity on your phone.</h2><p>Follow CAREERLIFT for daily job and career updates.</p></div><div class="hero-actions"><a class="btn primary" href="https://t.me/CareerLift360" target="_blank">Join Telegram ↗</a><a class="btn whatsapp" href="https://whatsapp.com/channel/0029VbDtgeEDJ6GripCIW82V" target="_blank">Join WhatsApp ↗</a></div></div></section>
 </main>
-<footer><div class="footer-inner"><div class="footer-brand"><span>CAREER<span class="brand-accent">LIFT</span> 🎓</span><p>Your Daily Dose of Job Opportunities.</p></div><div class="footer-links"><a href="#home">Home</a><a href="#jobs">Jobs</a><a href="#resources">Resources</a><a href="#categories">Categories</a><a href="#about">About</a><a href="#contact">Contact</a><a href="copyright.html">Copyright</a><a href="admin.html">Admin</a></div></div><p class="copyright">© 2026 CAREERLIFT — Founded & managed by SHAIK ALTHAF. All rights reserved.</p></footer>
+<footer><div class="footer-inner"><div class="footer-brand"><span>CAREER<span class="brand-accent">LIFT</span> 🎓</span><p>Your Daily Dose of Job Opportunities.</p></div><div class="footer-links"><a href="#jobs">Jobs</a><a href="#resources">Resources</a><a href="#categories">Categories</a><a href="#contact">Contact</a><a href="copyright.html">Copyright</a><a href="admin.html">Admin</a></div></div><p class="copyright">© 2026 CAREERLIFT — Founded & managed by SHAIK ALTHAF. All rights reserved.</p></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>window.supabaseClient=(window.supabase&&window.SUPABASE_URL&&!window.SUPABASE_URL.includes("YOUR-PROJECT"))?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY):null;</script><script src="script.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const revealElements = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealElements.forEach(function (element) { observer.observe(element); });
-  } else {
-    revealElements.forEach(function (element) { element.classList.add("show"); });
-  }
-});
-</script>
-
 </body></html>
