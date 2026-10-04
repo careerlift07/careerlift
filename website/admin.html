@@ -28,8 +28,8 @@
 
 <section id="contactPanel" class="admin-panel tab-panel" hidden><div class="note">Only the latest active contact profile is shown publicly. Use this form whenever you want to update your phone number, email or channel links.</div><form id="contactForm" class="admin-grid"><div class="field"><label>Phone number</label><input id="phone" placeholder="+91 98765 43210"></div><div class="field"><label>Email</label><input id="cemail" type="email" value="careerliftupdates@gmail.com"></div><div class="field"><label>Telegram URL</label><input id="ctelegram" type="url" value="https://t.me/CareerLift360"></div><div class="field"><label>WhatsApp URL</label><input id="cwhatsapp" type="url" value="https://whatsapp.com/channel/0029VbDtgeEDJ6GripCIW82V"></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Contact ✓</button><span id="contactMsg" class="message"></span></div></div></form><div class="admin-list" id="adminContacts"></div></section>
 </section></main>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 const client=(window.supabase&&window.SUPABASE_URL&&!window.SUPABASE_URL.includes("YOUR-PROJECT"))?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY):null;const $=id=>document.getElementById(id);const loginView=$("loginView"),dash=$("dashboardView");const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));function msg(el,t,e=false){el.textContent=t;el.style.color=e?"#ff9da8":"var(--green)"}
 async function refresh(){
   if(!client){
