@@ -31,9 +31,90 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
 <script>
 const client=(window.supabase&&window.SUPABASE_URL&&!window.SUPABASE_URL.includes("YOUR-PROJECT"))?window.supabase.createClient(window.SUPABASE_URL,window.SUPABASE_ANON_KEY):null;const $=id=>document.getElementById(id);const loginView=$("loginView"),dash=$("dashboardView");const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));function msg(el,t,e=false){el.textContent=t;el.style.color=e?"#ff9da8":"var(--green)"}
-async function refresh(){if(!client)return msg($("loginMsg"),"Configure Supabase first.",true);const {data:{session}}=await client.auth.getSession();if(session){loginView.hidden=true;dash.hidden=false;loadAll()}}
-$("loginForm").addEventListener("submit",async e=>{e.preventDefault();if(!client)return;msg($("loginMsg"),"Signing in...");const {error}=await client.auth.signInWithPassword({email:$("email").value,password:$("password").value});if(error)return msg($("loginMsg"),error.message,true);loginView.hidden=true;dash.hidden=false;loadAll()});
-$("logoutBtn").onclick=async()=>{await client.auth.signOut();dash.hidden=true;loginView.hidden=false};
+async function refresh(){
+  if(!client){
+    msg($("loginMsg"),"Supabase configuration not found. Check supabase-config.js.",true);
+    return;
+  }
+  try{
+    const {data,error}=await client.auth.getSession();
+    if(error){console.error("Supabase session error:",error);msg($("loginMsg"),error.message,true);return;}
+    if(data && data.session){
+      loginView.hidden=true;
+      dash.hidden=false;
+      loadAll();
+    }
+  }catch(error){
+    console.error("Session check failed:",error);
+    msg($("loginMsg"),"Unable to connect to Supabase. Check your internet connection and Supabase settings.",true);
+  }
+}
+
+$("loginForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const email=$("email").value.trim().toLowerCase();
+  const password=$("password").value;
+  if(!client){
+    msg($("loginMsg"),"Supabase configuration not found. Check supabase-config.js.",true);
+    return;
+  }
+  if(!email || !password){
+    msg($("loginMsg"),"Enter both email and password.",true);
+    return;
+  }
+  const button=e.submitter || $("loginForm").querySelector("button[type=submit]");
+  button.disabled=true;
+  button.textContent="Signing in...";
+  msg($("loginMsg"),"Checking your account...");
+  try{
+    const {data,error}=await client.auth.signInWithPassword({email,password});
+    if(error){
+      console.error("Supabase login error:",error);
+      let text=error.message || "Login failed.";
+      if(/invalid login credentials/i.test(text)){
+        text="Invalid email or password. Make sure this email exists under Supabase → Authentication → Users and that the password is correct.";
+      }else if(/email not confirmed/i.test(text)){
+        text="Your email is not confirmed. Open Supabase → Authentication → Users and confirm the admin user, then try again.";
+      }else if(/failed to fetch|network/i.test(text)){
+        text="Cannot reach Supabase. Check your internet connection and the values in supabase-config.js.";
+      }
+      msg($("loginMsg"),text,true);
+      return;
+    }
+    if(data && data.session){
+      msg($("loginMsg"),"Login successful ✓");
+      loginView.hidden=true;
+      dash.hidden=false;
+      await loadAll();
+    }else{
+      msg($("loginMsg"),"Login did not create a session. Check your Supabase Auth user.",true);
+    }
+  }catch(error){
+    console.error("Login exception:",error);
+    msg($("loginMsg"),"Login failed. Open the browser console (F12) for details.",true);
+  }finally{
+    button.disabled=false;
+    button.textContent="Sign in securely →";
+  }
+});
+
+client && client.auth.onAuthStateChange((event,session)=>{
+  if(event === "SIGNED_IN" && session){
+    loginView.hidden=true;
+    dash.hidden=false;
+  }
+  if(event === "SIGNED_OUT"){
+    dash.hidden=true;
+    loginView.hidden=false;
+  }
+});
+
+$("logoutBtn").onclick=async()=>{
+  if(client) await client.auth.signOut();
+  dash.hidden=true;
+  loginView.hidden=false;
+  $("password").value="";
+};
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".tab-panel").forEach(x=>x.hidden=true);$(b.dataset.tab+"Panel").hidden=false});
 $("jobForm").onsubmit=async e=>{e.preventDefault();msg($("jobMsg"),"Publishing...");const {data:{user}}=await client.auth.getUser();const payload={title:$("title").value.trim(),company:$("company").value.trim(),category:$("category").value,location:$("location").value.trim(),qualification:$("qualification").value.trim(),experience:$("experience").value.trim(),salary:$("salary").value.trim(),last_date:$("last_date").value.trim(),apply_url:$("apply_url").value.trim(),telegram_url:$("telegram_url").value.trim()||null,whatsapp_url:$("whatsapp_url").value.trim()||null,description:$("description").value.trim(),created_by:user.id};const {error}=await client.from("jobs").insert(payload);if(error)return msg($("jobMsg"),error.message,true);msg($("jobMsg"),"Published ✓");$("jobForm").reset();loadJobsAdmin()};
 const resourceFile=$("resourceFile"),fileName=$("fileName"),resourceTitle=$("rtitle"),publishResourceBtn=$("publishResourceBtn");resourceFile.addEventListener("change",()=>{const f=resourceFile.files[0];fileName.textContent=f?`Selected: ${f.name}`:""});function validResourceFile(f){return f&&["application/pdf","image/jpeg","image/png","image/webp"].includes(f.type)}function safeFileName(name){return name.replace(/[^a-zA-Z0-9.-]/g,"-").toLowerCase()}$("resourceForm").onsubmit=async e=>{e.preventDefault();if(!client)return msg($("resourceMsg"),"Configure Supabase first.",true);const {data:{user}}=await client.auth.getUser();if(!user)return msg($("resourceMsg"),"Please sign in again.",true);const title=resourceTitle.value.trim(),file=resourceFile.files[0];if(!title)return msg($("resourceMsg"),"Enter a resource title.",true);if(!validResourceFile(file))return msg($("resourceMsg"),"Select a PDF, JPG, PNG or WEBP file.",true);if(file.size>20*1024*1024)return msg($("resourceMsg"),"Maximum file size is 20 MB.",true);publishResourceBtn.disabled=true;publishResourceBtn.textContent="Uploading...";msg($("resourceMsg"),"Uploading file...");try{const path=`${Date.now()}-${crypto.randomUUID()}-${safeFileName(file.name)}`;const {error:uploadError}=await client.storage.from("resources").upload(path,file,{cacheControl:"3600",upsert:false,contentType:file.type});if(uploadError)throw uploadError;const {data:publicData}=client.storage.from("resources").getPublicUrl(path);const type=file.type==="application/pdf"?"PDF":"Image";const {error:dbError}=await client.from("resources").insert({title,type,resource_url:publicData.publicUrl,image_url:type==="Image"?publicData.publicUrl:null,description:null,created_by:user.id});if(dbError){await client.storage.from("resources").remove([path]);throw dbError}msg($("resourceMsg"),"Resource published successfully ✓");$("resourceForm").reset();fileName.textContent="";loadResourcesAdmin()}catch(error){console.error(error);msg($("resourceMsg"),error.message||"Upload failed. Please try again.",true)}finally{publishResourceBtn.disabled=false;publishResourceBtn.textContent="Upload & Publish ✓"}};$("resourceForm").addEventListener("reset",()=>{setTimeout(()=>{fileName.textContent="";msg($("resourceMsg"),"")},0)});
