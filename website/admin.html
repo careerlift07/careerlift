@@ -12,8 +12,107 @@
 <div class="field"><label>Job title *</label><input id="title" required></div><div class="field"><label>Company</label><input id="company"></div><div class="field"><label>Category</label><select id="category"><option>Government Jobs</option><option>Private Jobs</option><option>IT Jobs</option><option>Freshers Jobs</option><option>Work From Home</option><option>Banking Jobs</option><option>Internships</option><option>Other</option></select></div><div class="field"><label>Location</label><input id="location"></div><div class="field"><label>Qualification</label><input id="qualification"></div><div class="field"><label>Experience</label><input id="experience"></div><div class="field"><label>Salary</label><input id="salary"></div><div class="field"><label>Last date</label><input id="last_date"></div><div class="field full"><label>Official application URL *</label><input id="apply_url" type="url" required></div><div class="field"><label>Telegram URL</label><input id="telegram_url" type="url"></div><div class="field"><label>WhatsApp URL</label><input id="whatsapp_url" type="url"></div><div class="field full"><label>Description</label><textarea id="description"></textarea></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Job ✓</button><button class="btn secondary" type="reset">Clear</button><span id="jobMsg" class="message"></span></div></div></form><div class="admin-list" id="adminJobs"></div></section>
 
 <section id="resourcesPanel" class="admin-panel tab-panel" hidden><div class="note">Share PDFs, images, notes, videos or guides. Upload the file to a public location and paste its URL below. An optional image URL creates a visual resource card.</div><form id="resourceForm" class="admin-grid">
-<div class="field"><label>Resource title *</label><input id="rtitle" required placeholder="Aptitude Notes PDF"></div><div class="field"><label>Type</label><select id="rtype"><option>PDF</option><option>Image</option><option>Video</option><option>Notes</option><option>Guide</option><option>Other</option></select></div><div class="field full"><label>Resource URL *</label><input id="resource_url" type="url" required placeholder="https://..."></div><div class="field full"><label>Preview image URL (optional)</label><input id="image_url" type="url" placeholder="https://.../thumbnail.jpg"></div><div class="field full"><label>Description</label><textarea id="rdescription" placeholder="What is included in this material?"></textarea></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Resource ✓</button><button class="btn secondary" type="reset">Clear</button><span id="resourceMsg" class="message"></span></div></div></form><div class="admin-list" id="adminResources"></div></section>
+<div class="admin-panel">
 
+    <div class="admin-note">
+        Upload PDF files or images directly from your computer.
+        They will be added to the CAREERLIFT Resources section.
+    </div>
+
+    <form id="resourceForm">
+
+        <!-- RESOURCE TITLE -->
+        <div class="field">
+            <label>RESOURCE TITLE *</label>
+
+            <input
+                id="resourceTitle"
+                type="text"
+                placeholder="Example: Aptitude Notes PDF"
+                required
+            >
+        </div>
+
+
+        <!-- FILE UPLOAD -->
+        <div class="field" style="margin-top:20px;">
+
+            <label>UPLOAD PDF / IMAGE *</label>
+
+            <div class="upload-box">
+
+                <input
+                    id="resourceFile"
+                    type="file"
+                    accept=".pdf,image/*"
+                    required
+                >
+
+                <div class="upload-icon">
+                    📁
+                </div>
+
+                <strong>Select PDF or Image</strong>
+
+                <span>
+                    PDF, JPG, JPEG, PNG, WEBP
+                </span>
+
+            </div>
+
+            <div
+                id="fileName"
+                class="file-name"
+            ></div>
+
+        </div>
+
+
+        <!-- PUBLISH -->
+        <div class="admin-actions">
+
+            <button
+                type="submit"
+                class="btn primary"
+                id="publishResourceBtn"
+            >
+                Upload & Publish ✓
+            </button>
+
+            <button
+                type="reset"
+                class="btn secondary"
+                id="clearResourceBtn"
+            >
+                Clear
+            </button>
+
+            <span
+                id="resourceMsg"
+                class="message"
+            ></span>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+<!-- RECENT RESOURCES -->
+
+<div
+    class="admin-panel recent"
+    style="margin-top:20px;"
+>
+
+    <span class="eyebrow">
+        RECENT RESOURCES
+    </span>
+
+    <div id="adminResources"></div>
+
+</div>
 <section id="contactPanel" class="admin-panel tab-panel" hidden><div class="note">Only the latest active contact profile is shown publicly. Use this form whenever you want to update your phone number, email or channel links.</div><form id="contactForm" class="admin-grid"><div class="field"><label>Phone number</label><input id="phone" placeholder="+91 98765 43210"></div><div class="field"><label>Email</label><input id="cemail" type="email" value="careerliftupdates@gmail.com"></div><div class="field"><label>Telegram URL</label><input id="ctelegram" type="url" value="https://t.me/CareerLift360"></div><div class="field"><label>WhatsApp URL</label><input id="cwhatsapp" type="url" value="https://whatsapp.com/channel/0029VbDtgeEDJ6GripCIW82V"></div><div class="field full"><div class="admin-actions"><button class="btn primary" type="submit">Publish Contact ✓</button><span id="contactMsg" class="message"></span></div></div></form><div class="admin-list" id="adminContacts"></div></section>
 </section></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
